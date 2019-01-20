@@ -29,7 +29,6 @@ function fetch($url, $postdata = '', $auth = '', $headers = '', $method = '', $f
         $fp = fopen($file, "wb+");
         curl_setopt($curl, CURLOPT_FILE, $fp);
     }
-
     $response = curl_exec($curl);
     $this->errorResponse = '';
     if (empty($response)) {
