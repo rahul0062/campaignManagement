@@ -95,7 +95,7 @@ try {
 
     $url = $this->url . '/campaigns/' . $campaignId . '/promotedLinks';
     $imageName = $adsObject[masterLocalAds::ColName_image_url];
-    $imageFilePath = '';
+    $imageFilePath = '<image_file_path>';
     $imageFilePath = realpath($imageFilePath);
     $mimeType = mime_content_type($imageFilePath);
 

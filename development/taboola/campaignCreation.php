@@ -1,14 +1,11 @@
 <?php
 
+$country_targeting_value = array_map("strtoupper", 'US');
+$country_targeting['type'] = "INCLUDE";
+$country_targeting['value'] = $country_targeting_value;
 
 
-if (count($arrLocalMasterCampaign[masterLocalCampaign::ColName_country]) > 0) {
-    $country_targeting_value = array_map("strtoupper", $arrLocalMasterCampaign[masterLocalCampaign::ColName_country]);
-    $country_targeting[self::ColName_API_type] = "INCLUDE";
-    $country_targeting[self::ColName_API_value] = $country_targeting_value;
-}
-
-$arrLocalMasterCampaign[masterLocalCampaign::ColName_device] = explode("_", $arrLocalMasterCampaign[masterLocalCampaign::ColName_device]);
+$arrLocalMasterCampaign['device'] = 'desktop';
 
 if (count($arrLocalMasterCampaign[masterLocalCampaign::ColName_device]) > 0) {
     foreach ($arrLocalMasterCampaign[masterLocalCampaign::ColName_device] as $device) {
