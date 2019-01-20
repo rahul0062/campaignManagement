@@ -54,10 +54,13 @@ function fetch($url, $postdata = '', $auth = '', $headers = '', $method = '', $f
 }
 
 try {
-    $startDate = '2019-02-01';
-    $endDate = '2019-02-10';
+    $startDate = '<start_date>';
+    $endDate = '<end_date>';
     $budgetType = "CAMPAIGN";
-    $advertiserId = '';
+    $advertiserId = '<avertiser_id>';
+    $authHeader = array(
+        'OB-TOKEN-V1'=>'<access_token>'
+    );
 
     $arrBudget = array();
     $arrBudget[Budget::ColName_runForever] = false;
@@ -80,7 +83,7 @@ try {
         Campaign::ColName_Campaign_name => 'my_first_campaign',
         Campaign::ColName_Campaign_cpc => '10',
         Campaign::ColName_Campaign_enabled => "true",
-        Campaign::ColName_Campaign_targeting => array('platform'=>array('desktop'),'locations'=>array())
+        Campaign::ColName_Campaign_targeting => array('platform'=>array("DESKTOP","MOBILE"),'locations'=>array('<location_id>'))
     );
 
     $campaignObject['budgetId'] = $budgetId;
@@ -105,9 +108,9 @@ try {
         'image' => $curlFileObject
     );
 
-    $me = array_pop($this->authHeader);
-    $responseStr = $this->apiHandle->fetch($url, $arrayAds, "", $authHeader, "POST");
-    array_push($this->authHeader, $me);
+    $me = array_pop($authHeader);
+    $responseStr = fetch($url, $arrayAds, "", $authHeader, "POST");
+    array_push($authHeader, $me);
 
     $responseArr = json_decode($responseStr, true);
     $adId = (string)$responseArr['id'];
