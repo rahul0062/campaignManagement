@@ -42,12 +42,12 @@ use FacebookAds\Object\AdImage;
 use FacebookAds\Object\Fields\AdImageFields;
 
 try {
-	$access_token = '<access_token>';
-	$app_id = '<app_id>';
-	$app_secret = '<app_secret>';
+	$access_token = 'EAADwX3AjbyABAKDyLDUJqCYcO4vm5Vg7mf1XvIsefM5wGL7CbEF7VJrYpVIZAA010p6lUGE4nZBUSpf2D9FQ5codT8cwzYanyrQPdhUmZCsZBqkjmLeBSipXSCt8MRxI44e4AIqiuUuaGYDwhxaCegFQuJO2pX12GaAJE0vsmpJx5adsffeOShJqAhcp30sToZCVMUgq8WQZDZD';
+	$app_id = '264292693929760';
+	$app_secret = '21c197427cfe15eeeb7a4b2622be9c51';
 	// should begin with "act_" (eg: $account_id = 'act_1234567890';)
-	$account_id = 'act_<account_id>';
-	define('SDK_DIR', __DIR__ . '/facebook-php-ads-sdk'); // Path to the SDK directory
+	$account_id = 'act_309855264';
+	define( __DIR__ . '/facebook-php-ads-sdk'); // Path to the SDK directory
 	$loader = include SDK_DIR.'/../../vendor/autoload.php';
 	date_default_timezone_set('America/Los_Angeles');
 	// Configurations - End
@@ -91,7 +91,35 @@ try {
 	/**
 	 * Step 2 Create the Campaign
 	 */
+try{
+	$objCampaign = new Campaign();
+	$objCampaign->setParentId($this->account->id);
+	
+	$objCampaign->setData(array(
+		CampaignFields::ID => '6132382991351',
+		FacebookAds\Object\Fields\CampaignFields::STATUS => FacebookAds\Object\Values\CampaignStatusValues::ACTIVE
+	));
 
+	$objCampaign->update();
+}catch (FacebookAds\Exception\Exception $fx) {
+		//my_var_dump($fx, 'Facebook Exception: ' . __FUNCTION__);
+		$exceptionArray = array();
+	
+		if (method_exists($fx, 'getErrorUserTitle')) {
+			array_push($exceptionArray, $fx->getErrorUserTitle());
+		} else if (method_exists($fx, 'getErrorUserMessage')) {
+			array_push($exceptionArray, $fx->getErrorUserMessage());
+		}
+	
+		array_push($exceptionArray, $fx->getMessage());
+	
+		$mssage = implode(', ', $exceptionArray);
+		print_r($mssage, $fx->getCode());
+	} catch (Exception $ex) {
+		//my_var_dump($ex, 'Exception: ' . __FUNCTION__);
+		print_r($ex->getMessage(), $ex->getCode());
+	}
+die;
 	$campaign  = new Campaign(null, $account->id);
 	$campaign->setData(array(
 		CampaignFields::NAME => 'My First Campaign',

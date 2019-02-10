@@ -1,0 +1,14 @@
+{
+  "name": "instagram.js",
+  "version": "1.0.0",
+  "description": "campaign creation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rahul",
+  "license": "ISC",
+  "dependencies": {
+    "facebook-nodejs-business-sdk": "^3.2.6"
+  }
+}
