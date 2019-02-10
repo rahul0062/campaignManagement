@@ -42,11 +42,10 @@ use FacebookAds\Object\AdImage;
 use FacebookAds\Object\Fields\AdImageFields;
 
 try {
-	$access_token = 'EAADwX3AjbyABAKDyLDUJqCYcO4vm5Vg7mf1XvIsefM5wGL7CbEF7VJrYpVIZAA010p6lUGE4nZBUSpf2D9FQ5codT8cwzYanyrQPdhUmZCsZBqkjmLeBSipXSCt8MRxI44e4AIqiuUuaGYDwhxaCegFQuJO2pX12GaAJE0vsmpJx5adsffeOShJqAhcp30sToZCVMUgq8WQZDZD';
-	$app_id = '264292693929760';
-	$app_secret = '21c197427cfe15eeeb7a4b2622be9c51';
-	// should begin with "act_" (eg: $account_id = 'act_1234567890';)
-	$account_id = 'act_309855264';
+	$access_token = '<access_token>';
+	$app_id = '<app_id>';
+	$app_secret = '<app_secret>';
+	$account_id = '<account_id>';
 	define( __DIR__ . '/facebook-php-ads-sdk'); // Path to the SDK directory
 	$loader = include SDK_DIR.'/../../vendor/autoload.php';
 	date_default_timezone_set('America/Los_Angeles');
